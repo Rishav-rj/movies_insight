@@ -3,31 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies Insight</title>
+    <title>Fav movies</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8874c6cb4f.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="favMovies()">
     <navbar class="nav">
         <div class="logo">
             <img src="movies-insight.png">
         </div>
-        <div class="search">
-            <input type="text" placeholder="Search your movie here..." id="movie-search">
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="fav-title">
+            <h2>Your Favourite Movies</h2>
         </div>
-        <div class="favourites">
-            <a href="fav.html">Favourites</a>
+        <div class="fav-back">
+            <h2><a href="index.html">Back to home</a></h2>
         </div>
     </navbar>
 
-    <div class="search-results">
-        <div class="load">
-        </div>
-        <h1>Search <br/>to<br/> Explore</h1>
+    <div class="fav-container search-results">
+
     </div>
 
 

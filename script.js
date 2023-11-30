@@ -3,17 +3,29 @@
 
 let searchBox = document.querySelector("#movie-search");
 let MovieResults = document.querySelector('.search-results');
-let movieDetail = document.querySelector('.movie-detail-conttainer');
+let movieDetail = document.querySelector('.movie-detail-container');
+let favMovie = document.querySelector('.fav-container');
 let results = [];
+let favList = JSON.parse(localStorage.getItem("fav"));
+
 
 
 function addToFav(id){
-    // if(fav == NaN){
-    //     fav = []
-    // }
-    // fav.push(id)
-    // localStorage.setItem(fav, id)
-    alert("added to Fav", id)
+    if(favList == null){
+        favList = []
+    }
+    favList.push(id)
+    localStorage.setItem("fav", JSON.stringify(favList));
+    alert("added to Fav")
+}
+
+function deleteFav(id){
+    favList = favList.filter((ele)=>{
+        return ele != id
+    })
+    localStorage.setItem("fav", JSON.stringify(favList));
+    alert(`Movie Removed`);
+    window.location.replace('fav.html');
 }
 
 async function moviesList(searchTerm){
@@ -32,10 +44,12 @@ async function moviesList(searchTerm){
                 movie.Poster = "moviedetailed.png"
             }
             let list = `
-            <a href="movieDetailed.html?id=${id}">
-                <div class="movie-card">
+            <div class="movie-card">
+                <a href="movieDetailed.html?id=${id}">
                     <img src=${movie.Poster} alt="movie-poster">
+                </a>
                     <h2>${movie.Title}</h2>
+                
                     <div>
                         <h3>${movie.Year}</h3>
                         <div class="check">
@@ -44,7 +58,6 @@ async function moviesList(searchTerm){
                         
                     </div>
                 </div>
-            </a>
             `
 
             MovieResults.innerHTML += list;
@@ -54,11 +67,13 @@ async function moviesList(searchTerm){
 
 }
 
+if(searchBox != null){
+    searchBox.addEventListener('input', async()=>{
+        const searchTerm = searchBox.value.trim()
+        moviesList(searchTerm)
+    });
+}
 
-searchBox.addEventListener('input', async()=>{
-    const searchTerm = searchBox.value.trim()
-    moviesList(searchTerm)
-});
 
 
 async function movieDetailed(){
@@ -94,3 +109,35 @@ async function movieDetailed(){
 
 }
 
+
+function favMovies(){
+    if(favList == null || favList.length == 0){
+        return
+    }
+    favList.forEach(async function(id){
+        let movieURL = `https://omdbapi.com/?i=${id}&apikey=878d3a94`;
+        let movieList = await fetch(movieURL);
+        let movieObj = await movieList.json();
+        if(movieObj.Poster == "N/A"){
+            movieObj.Poster = "moviedetailed.png"
+        }
+        let favmovie = `
+        <div class="movie-card">
+            <a href="movieDetailed.html?id=${id}">
+                <img src=${movieObj.Poster} alt="movie-poster">
+            </a>
+                <h2>${movieObj.Title}</h2>
+            
+                <div>
+                    <h3>${movieObj.Year}</h3>
+                    <div class="check">
+                        <abbr title="Delete Movie"><i class="fa-solid fa-trash-can" style="color: #fd3f3f;" onclick="deleteFav('${id}')"></i></abbr>
+                    </div>
+                    
+                </div>
+            </div>
+        `
+
+        favMovie.innerHTML += favmovie;
+    })
+}

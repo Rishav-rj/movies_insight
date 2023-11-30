@@ -127,9 +127,10 @@ body{
 
 .movie-card{
     width:220px;
-    height:420px;
+    min-height:430px;
     box-shadow: 1px 1px 6px 4px rgb(0, 0, 0, 0.3);
     background-color: var(--light);
+    padding:5px;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -141,10 +142,10 @@ body{
     width:200px;
 }
 .movie-card h2{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-left: 10px;
     color: var(--primary);
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
 }
 .movie-card div{
     display: flex;
@@ -224,4 +225,34 @@ body{
 
 .fac-check{
     margin-top: 40px;
+}
+
+.fav-title{
+    flex: 1;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 1px 1px 6px rgb(255, 46, 46)
+}
+
+.fav-back{
+    flex: 1;
+    margin-bottom: 20px;
+    margin-right: 30px;
+}
+
+.fav-back h2{
+    text-align: end;
+}
+
+.fav-back a{
+    text-decoration: none;
+    color: var(--secondary);
+    cursor: pointer;
+    margin-bottom: 12px;
+    box-shadow: 1px 1px 2px 1px grey;
+    padding: 5px 15px;
+}
+.fav-back a:hover{
+    color: black;
 }
