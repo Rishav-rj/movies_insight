@@ -9,10 +9,13 @@ let results = [];
 let favList = JSON.parse(localStorage.getItem("fav"));
 
 
-
 function addToFav(id){
     if(favList == null){
         favList = []
+    }
+    if(favList.includes(id)){
+        alert("Movie already in Favourites")
+        return;
     }
     favList.push(id)
     localStorage.setItem("fav", JSON.stringify(favList));
@@ -110,11 +113,11 @@ async function movieDetailed(){
 }
 
 
-function favMovies(){
+async function favMovies(){
     if(favList == null || favList.length == 0){
         return
     }
-    favList.forEach(async function(id){
+    for(id of favList){
         let movieURL = `https://omdbapi.com/?i=${id}&apikey=878d3a94`;
         let movieList = await fetch(movieURL);
         let movieObj = await movieList.json();
@@ -139,5 +142,5 @@ function favMovies(){
         `
 
         favMovie.innerHTML += favmovie;
-    })
+    }
 }
