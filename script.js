@@ -117,7 +117,7 @@ async function movieDetailed(){
             <p class="actor"><b>Actors : </b>${data.Actors}</p>
             <p class="plot">${data.Plot}</p>
         </div>
-        <div class="check fac-check">
+        <div class="check fav-check">
             <abbr title="Add to Favourite"><i class="fa-solid fa-plus" onclick="addToFav('${id}')"></i></abbr>
         </div>
     </div>
