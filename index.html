@@ -10,10 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8874c6cb4f.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="movieFact()">
     <navbar class="nav">
         <div class="logo">
-            <img src="movies-insight.png">
+            <img src="logo.png">
         </div>
         <div class="search">
             <input type="text" placeholder="Search your movie here..." id="movie-search">
@@ -23,6 +23,12 @@
             <a href="fav.html">Favourites</a>
         </div>
     </navbar>
+
+    <div class="fact">
+        <h2>Do you know?</h2>
+        <p class="fact-heading"></p>
+        <div class="image"></div>
+    </div>
 
     <div class="search-results">
         <div class="load">

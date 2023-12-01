@@ -82,8 +82,7 @@ body{
 /* Search results section */
 .search-results{
     display: flex;
-    /* width: 100vw; */
-    height:70vh;
+    height:40vh;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -125,6 +124,7 @@ body{
 }
 
 
+/* Movie cards */
 .movie-card{
     width:220px;
     min-height:430px;
@@ -188,6 +188,7 @@ body{
 }
 
 
+/* Movie Detailed page */
 .movie-detail{
     display: flex;
     justify-content: center;
@@ -223,10 +224,8 @@ body{
     font-size: 1.1rem;
 }
 
-.fac-check{
-    margin-top: 40px;
-}
 
+/* Favourite page */
 .fav-title{
     flex: 1;
     margin-bottom: 10px;
@@ -255,4 +254,33 @@ body{
 }
 .fav-back a:hover{
     color: black;
+}
+
+
+/* Fact Section */
+.fact{
+    margin: 10px;
+}
+.fact h2{
+    margin: 10px;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light);
+    text-shadow: 1px 1px 1px rgb(255, 47, 47)
+}
+.fact .fact-heading{
+    font-size: 1.5rem;
+    text-align: center;
+    margin: auto;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    max-width: 600px;
+}
+.fact .image{
+    margin: 10px;
+    text-align: center;
+}
+.fact img{
+    max-width: 650px;
+    border-radius: 8px;
 }

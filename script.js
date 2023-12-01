@@ -1,13 +1,27 @@
 // Movies search List - https://www.omdbapi.com/?s=raa&page=1&apikey=878d3a94
 // Movie details - https://omdbapi.com/?i=tt4154796&apikey=878d3a94
 
+
+// Variable
 let searchBox = document.querySelector("#movie-search");
 let MovieResults = document.querySelector('.search-results');
 let movieDetail = document.querySelector('.movie-detail-container');
 let favMovie = document.querySelector('.fav-container');
 let results = [];
 let favList = JSON.parse(localStorage.getItem("fav"));
+let factHeadline = document.querySelector('.fact-heading');
+let factImage = document.querySelector('.fact .image');
+let factContainer = document.querySelector('.fact');
 
+let facts = [{fact:"Tom Cruise Supremacy At The Box Office: Mission: Impossible Star Holds The Guinness World Record For Having Not 3, 4 Or 5 But 8 Consecutive $100 Million Movies To His Credit",img:"images/1.jpg"},{fact:"Yash Penned Most Of His Powerful Dialogues By His Own In The Film",img:"images/2.jpg"},{fact:"Shah Rukh Khan Is The Only Indian Actor With 14 Films Earning $10 Million Or More At The Overseas Box Office",img:"images/3.jpg"},{fact:"Zoe Saldana With Avatar 2, Avengers: Endgame & 2 Others Is The Only Actor To Have Four $2 Billion Movies In The Kitty",img:"images/4.jpg"},{fact:"Shah Rukh Khan’s Kabhi Haa Kabhi Naa Took 12 Years To Recover Its Budget",img:"images/5.jpg"},{fact:"The Dark Knight Rises: Anne Hathaway’s Salary Was 3X Of What Tom Hardy Charged As His Fees, & Remember It Was For A Screen Time Of Less Than 20 Minutes!",img:"images/6.jpg"},
+{fact:"Jr NTR Received This Much As Salary For His Debut Film & It’s 112400% Less When Compared With His RRR Fees",img:"images/7.jpg"}, {fact:"KGF Chapter 2 Has Sold The Most Tickets On BookMyShow By Beating Baahubali 2",img:"images/8.jpg"}, {fact:"Inception’s Home Media Revenue Is As High As Its Budget",img:"images/9.jpg"}, {fact:"Before Robert Pattinson, Around 5000 Actors Had Auditioned For Twilight",img:"images/10.jpg"}];
+
+
+function movieFact(){
+    let i = Math.floor(Math.random() * 9)
+factHeadline.innerHTML = `${facts[i].fact}`
+factImage.innerHTML = `<img src=${facts[i].img} alt="fact-image">`
+}
 
 function addToFav(id){
     if(favList == null){
@@ -19,7 +33,7 @@ function addToFav(id){
     }
     favList.push(id)
     localStorage.setItem("fav", JSON.stringify(favList));
-    alert("added to Fav")
+    alert("Added to your Favourites list")
 }
 
 function deleteFav(id){
@@ -40,6 +54,7 @@ async function moviesList(searchTerm){
     }
 
     if(results.length > 0){
+        factContainer.innerHTML ="";
         MovieResults.innerHTML = ""; 
         results.forEach(function(movie){
             let id = movie.imdbID;
@@ -84,7 +99,6 @@ async function movieDetailed(){
     let id = movieURL.get('id');
     const res = await fetch(`https://omdbapi.com/?i=${id}&apikey=878d3a94`);
     const data = await res.json();
-    console.log(data);
     if(data.Poster == "N/A"){
         data.Poster = "moviedetailed.png"
     }
