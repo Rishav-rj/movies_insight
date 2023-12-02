@@ -288,3 +288,23 @@ body{
     max-width: 650px;
     border-radius: 8px;
 }
+
+
+/* Scroll bar */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(88, 88, 88);
+}
