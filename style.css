@@ -157,7 +157,7 @@ body{
 .check i{
     margin-right:10px;
     font-size: 1.5rem;
-    color: var(--light);
+    color: var(--secondary);
     border-radius: 50%;
     cursor: pointer;
     text-shadow: 1px 1px 3px var(--primary);
@@ -246,6 +246,10 @@ body{
 
 .fav-check{
     margin-top: 45px;
+}
+
+.fav-check i{
+    color:var(--light);
 }
 
 .fav-back h2{
